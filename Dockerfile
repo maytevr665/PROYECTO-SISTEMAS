@@ -8,8 +8,19 @@ WORKDIR /app
 COPY PROYECTO SISTEMAS/ ./PROYECTO SISTEMAS/
 COPY requirements.txt ./
 
-# Instala dependencias del sistema (para paquetes como numpy, torch, etc.)
-RUN apt-get update && apt-get install -y build-essential gcc && rm -rf /var/lib/apt/lists/*
+# Instala dependencias del sistema (para paquetes científicos y de imágenes)
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    gcc \
+    g++ \
+    libffi-dev \
+    libssl-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    zlib1g-dev \
+    libjpeg-dev \
+    libpng-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 # Instala las dependencias de Python
 RUN pip install --upgrade pip setuptools wheel build && pip install -r requirements.txt

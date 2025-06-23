@@ -7,15 +7,3 @@ services:
     envVars:
       - key: SECRET_KEY
         generateValue: true 
-  - type: web
-    name: sistema-aprendizaje-autismo
-    env: python
-    rootDir: PROYECTO SISTEMAS
-    plan: free
-    buildCommand: "pip install --upgrade pip setuptools wheel build && pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
-    envVars:
-      - key: PYTHON_VERSION
-        value: "3.10"
-      - key: SECRET_KEY
-        generateValue: true 
